@@ -1,3 +1,10 @@
 Valid Account Numbers: 345, 968, 113
 Account Balances: 1339.34, 385.45, 20.27
 To test: Negatives, 0, Positives, Strings
+
+Step 1: Enter Account Number
+Step 2: Menu pop up
+Step 3.1: Withdraw
+Step 3.2: Deposit
+Step 3.3: Show Balance
+Step 3.4: Exit
