@@ -56,4 +56,45 @@ class Lab6 {
 									continue;
 								}
 
-							withdraw(accUsed, out, bankBalance);							
+							withdraw(accUsed, out, bankBalance);
+
+							if(printAccountBalance(accUsed, bankBalance) < 0)
+								{
+									deposit(accUsed, out, bankBalance);
+									System.out.println("Please try a different amount");
+								}
+							else
+								{
+									break;
+								}
+						}
+					}
+						
+					else if(action == 2) {
+						while(true) {
+							System.out.println("How much will you be depositing: ");
+							int in = input.nextInt();
+							if(in < 0)
+								{
+									System.out.println("Please try a different amount");
+								}
+							else
+								{
+									deposit(accUsed, in, bankBalance);
+									break;
+								}
+						}
+					}
+
+					else if(action == 3) {
+						System.oiut.println(printAccountBalance(accUsed, bankBalance));
+					}
+
+					else {
+						System.out.println("Please choose a number between 1-4");
+					}
+				}
+				break;
+			}
+		}
+	}
