@@ -1,10 +1,10 @@
-\import java.util.Scanner;
+import java.util.Scanner;
 import java.util.Arrays;
 
 class Lab6 {
 
 	public static double printAccountBalance(int bankNo, double[] bankBalance) {
-		return bankBalance[bankNo]
+		return bankBalance[bankNo];
 	}
 
 	public static void withdraw(int bankNo, int out, double[] bankBalance) {
@@ -18,7 +18,7 @@ class Lab6 {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		int[] bankNumbers = {345. 968, 113};
+		int[] bankNumbers = {345, 968, 113};
 		double [] bankBalance = {1339.34, 385.45, 20.27};
 
 		while(true) {
@@ -87,7 +87,7 @@ class Lab6 {
 					}
 
 					else if(action == 3) {
-						System.oiut.println(printAccountBalance(accUsed, bankBalance));
+						System.out.println(printAccountBalance(accUsed, bankBalance));
 					}
 
 					else {
