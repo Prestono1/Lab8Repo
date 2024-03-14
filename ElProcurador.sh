@@ -27,7 +27,12 @@ done
 #Step 2
 #Grep Methods
 
+methodChk=("printaccountbalance" "withdraw" "deposit")
 
+for counter in {0..2}
+do
+	
+done
 
 #Step 3.1
 #Withdraw testing
