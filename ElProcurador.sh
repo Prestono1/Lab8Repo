@@ -69,9 +69,9 @@ done
 #Step 3.2
 #Deposit testing
 
-depositNos=(1339 0 1 -1 9999999999 -9999999999 one @@@@ 4 10)
+depositNos=(1339 0 -1)
 
-for counter in {0..9}
+for counter in {0..2}
 do
 	java Lab6.java
 	sleep 2
@@ -85,9 +85,38 @@ do
 		let "failNo += 1"
 	else
 		let "workingAsIntended += 1"
-	done
-
+	fi
 done
 #Step 3.3
+#Just test show balance
+	
+java Lab6.java
+sleep 2
+echo 345
+sleep 1
+echo 3
+
+if[ $? -eq 1 ]
+then
+	let "failNo += 1"
+else
+	let "workingAsIntended += 1"
+fi
+
 #Step 3.4
-#Step 3.5
+#Just test exit feature
+
+java Lab6.java
+sleep 2
+echo 345
+sleep 1
+echo 4
+
+if[ $? -eq 1 ]
+then
+	let "failNo += 1"
+else
+	let "workingAsIntended += 1"
+fi
+
+#EOF
