@@ -5,14 +5,32 @@ let "failNo = 0"
 let "failRate = 0"
 let "grepNo = 0"
 
+
 #Step 1
+#Grep initial check
+
+methodChk=("printAccountBalance" "Withdraw" "Deposit")
+
+for counter in {0..2}
+do
+	grpRslt=`grep ${methodChk[counter]} Lab6.java`
+	if [ -z $grpRslt ]
+	then
+		let "failNo += 1"
+	else
+		let "workingAsIntended += 1"
+		let "grepNo += 1"
+	fi
+done
+
+#Step 2
 #Should try all of bankNos and if any pass, increment
 #working as intended and if anything fails it incrememnts failNo
 
-bankNos=(345 968 113 bankNo 0 9999999999 -9999999999 1 4 @@@)
+bankNos=(345 968 113)
 
-for counter in {0..9}
-do
+for counter in {0..2}
+
 	java Lab6.java
 	sleep 2
 	echo ${bankNos[counter]}
@@ -24,22 +42,14 @@ do
 		let "workingAsInteded += 1"
 	fi
 done
-#Step 2
-#Grep Methods
 
-methodChk=("printaccountbalance" "withdraw" "deposit")
-
-for counter in {0..2}
-do
-	
-done
 
 #Step 3.1
 #Withdraw testing
 
-withdrawNos=(1339 1340 1  0 -1 9999999999 -9999999999 one @@@)
+withdrawNos=(1340 -1 0)
 
-for counter in {0..9}
+for counter in {0..2}
 do
 	java Lab6.java
 	sleep 2

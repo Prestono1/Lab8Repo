@@ -1,12 +1,11 @@
 Valid Account Numbers: 345, 968, 113
 Account Balances: 1339.34, 385.45, 20.27
-To test: Regular Nos, 0, Negatives, Max Ints, Strings
+To test: Only intended features
 To grep: printAccountBalance, withdraw, deposit
 
-Step 1: Enter Account Number
-Step 2: Grep for Methods
+Step 1: Grep for Methods
+Step 2: Account Numbers
 Step 3.1: Withdraw
 Step 3.2: Deposit
 Step 3.3: Show Balance
 Step 3.4: Exit
-Step 3.5: Additional Menu options
