@@ -1,13 +1,21 @@
 #! /bin/bash
 
+#included: term was included
+#failNo: term was not included
+#failRate: included + failNo / failNo = failRate
+#improvChk: checks every segment to append to improvementScore
+#improvementScore: uses binary to give a rough area to improve on
+
 let "included = 0"
 let "failNo = 0"
 let "failRate = 0"
-
+let "improvChk = 0"
+let "improvementScore = 0"
 
 #Step 1
 #Grep initial check
 
+#1.1
 methodChk=("[pP]rint[aA]ccount[bB]alance" "[wW]ithdraw" "[dD]eposit")
 
 for counter in {0..2}
@@ -16,38 +24,20 @@ do
 	if [ -z $grpRslt ]
 	then
 		let "failNo += 1"
+		let "improvChk += 1"
 	else
 		let "included += 1"
 	fi
 done
 
-accNoChk=(345 968 113)
+if[ improvChk -gt 0 ]
+then
+	let "improvementScore += 1"
+	let "improvChk = 0"
+fi
 
-for counter in {0..2}
-do
-	grpRslt=`grep ${accNoChk[counter]} Lab6.java`
-	if [ -z $grpRslt ]
-	then
-		let "failNo += 1"
-	else
-		let "included += 1"
-	fi
-done
-
-accBalChk=(1339 385 20)
-
-for counter in {0..2}
-do
-	grpRslt=`grep ${accBalChk[counter]} Lab6.java`
-	if [ -z $grpRslt ]
-	then
-		let "failNo += 1"
-	else
-		let "included += 1"
-	fi
-done
-
-miscGrammarChk=("[eE]nter your bank account: " "[wW]ithdraw" "[dD]eposit" "[sS]how [bB]alance" "[eE]xit")
+#1.2
+miscGrammarChk=("[eE]nter your bank account" "[wW]ithdraw" "[dD]eposit" "[sS]how [bB]alance" "[eE]xit")
 for counter in {0..4}
 do
 	grpRslt=`grep ${methodChk[counter]} Lab6.java`
@@ -58,3 +48,28 @@ do
 		let "included += 1"
 	fi
 done
+
+if[ improvChk -gt 0 ]
+then
+	let "improvementScore += 2"
+	let "improvChk = 0"
+fi
+
+#feedback 
+
+feedback=("You are missing:" "one or more core methods" "one or more menu options"
+failRate="$failNo / ($failNo + $included)" | bc
+
+case $improvementScore in
+	1)
+		echo "${feedback[0]} ${feedback[1]}"
+		echo "You have a $failRate% fail rate"
+	;;
+	3)
+		echo "${feedback[0]} ${feedback[1]} and ${feedback[2]}"
+		echo "You have a $failRate% fail rate"
+	;;
+	2)
+		echo "${feedback[0]} ${feedback[2]}"
+		echo "You have a $failRate% fail rate"
+	;;

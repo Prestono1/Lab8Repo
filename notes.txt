@@ -1,14 +1,6 @@
 Valid Account Numbers: 345, 968, 113
 Account Balances: 1339.34, 385.45, 20.27
-To test: Only intended features
-To grep: printAccountBalance, withdraw, deposit
 
-Step 1: Grep for Methods
-Step 2: Account Numbers
-Step 3.1: Withdraw
-Step 3.2: Deposit
-Step 3.3: Show Balance
-Step 3.4: Exit
 
 Assignment Description:
 In the main method, prompt the user to enter a bank account number. Continue prompting until they enter a valid number. Once they enter a valid number display a menu system. From this menu ask the user if they want to print their balance, withdraw, or deposit money into their account. Change the array containing the balance in these methods. Make sure you are only changing and printing the balance of the appropriate bank account. Also make sure that the user does not enter negative values; they cannot withdraw a negative value or deposit a negative value. Their balance should also not be allowed to go below zero.
