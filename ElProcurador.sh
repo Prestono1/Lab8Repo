@@ -1,9 +1,8 @@
 #! /bin/bash
 
-let "workingAsIntended = 0"
+let "included = 0"
 let "failNo = 0"
 let "failRate = 0"
-let "grepNo = 0"
 
 
 #Step 1
@@ -18,7 +17,7 @@ do
 	then
 		let "failNo += 1"
 	else
-		let "workingAsIntended += 1"
+		let "included += 1"
 	fi
 done
 
@@ -31,7 +30,7 @@ do
 	then
 		let "failNo += 1"
 	else
-		let "workingAsIntended += 1"
+		let "included += 1"
 	fi
 done
 
@@ -44,18 +43,18 @@ do
 	then
 		let "failNo += 1"
 	else
-		let "workingAsIntended += 1"
+		let "included += 1"
 	fi
 done
 
-miscGrammarChk=( 
-for counter in {0..2}
+miscGrammarChk=("[eE]nter your bank account: " "[wW]ithdraw" "[dD]eposit" "[sS]how [bB]alance" "[eE]xit")
+for counter in {0..4}
 do
 	grpRslt=`grep ${methodChk[counter]} Lab6.java`
 	if [ -z $grpRslt ]
 	then
 		let "failNo += 1"
 	else
-		let "workingAsIntended += 1"
+		let "included += 1"
 	fi
 done
