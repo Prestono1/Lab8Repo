@@ -12,6 +12,8 @@ let "failRate = 0"
 let "improvChk = 0"
 let "improvementScore = 0"
 
+echo "initialized"
+
 #Step 1
 #Grep initial check
 
@@ -21,7 +23,7 @@ methodChk=("[pP]rint[aA]ccount[bB]alance" "[wW]ithdraw" "[dD]eposit")
 for counter in {0..2}
 do
 	grpRslt=`grep ${methodChk[counter]} Lab6.java`
-	if [ -z $grpRslt ]
+	if [ -z "$grpRslt" ]
 	then
 		let "failNo += 1"
 		let "improvChk += 1"
@@ -30,18 +32,20 @@ do
 	fi
 done
 
-if[ improvChk -gt 0 ]
+if [ $improvChk -gt 0 ]
 then
 	let "improvementScore += 1"
 	let "improvChk = 0"
 fi
+
+echo "past 1.1"
 
 #1.2
 miscGrammarChk=("[eE]nter your bank account" "[wW]ithdraw" "[dD]eposit" "[sS]how [bB]alance" "[eE]xit")
 for counter in {0..4}
 do
 	grpRslt=`grep ${methodChk[counter]} Lab6.java`
-	if [ -z $grpRslt ]
+	if [ -z "$grpRslt" ]
 	then
 		let "failNo += 1"
 	else
@@ -49,11 +53,13 @@ do
 	fi
 done
 
-if[ improvChk -gt 0 ]
+if [ improvChk -gt 0 ]
 then
 	let "improvementScore += 2"
 	let "improvChk = 0"
 fi
+
+echo "past 1.2"
 
 #feedback 
 
@@ -73,3 +79,7 @@ case $improvementScore in
 		echo "${feedback[0]} ${feedback[2]}"
 		echo "You have a $failRate% fail rate"
 	;;
+	*)
+		echo "Error in feedback module"
+	;;
+esac
